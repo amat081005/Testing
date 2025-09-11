@@ -104,10 +104,22 @@
 </head>
 <body class="min-h-screen py-12 px-4">
   <!-- Audio autoplay -->
-  <audio autoplay loop>
-    <source src="dj.mp3" type="audio/mpeg" />
-    
-  </audio>
+  <audio id="background-audio" autoplay loop muted playsinline>
+  <source src="dj.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  // Setelah pengguna klik halaman, aktifkan suara audio
+  document.body.addEventListener('click', function () {
+    const audio = document.getElementById('background-audio');
+    if (audio.muted) {
+      audio.muted = false;
+      audio.play();
+    }
+  }, { once: true });
+</script>
+
 
   <div class="max-w-7xl mx-auto">
     <!-- Header Section -->
