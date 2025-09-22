@@ -42,7 +42,8 @@
       transition: transform 0.3s ease;
       border-radius: 12px;
       flex-shrink: 0;
-      width: 350px;
+      width: 100%;
+      max-width: 300px;
       user-select: none;
     }
 
@@ -72,7 +73,7 @@
       }
     }
 
-    /* Scroll container styling */
+    /* Improved Scroll container styling for better responsiveness */
     .scroll-container {
       display: flex;
       overflow-x: auto;
@@ -80,9 +81,10 @@
       padding: 1rem;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255 255 255 / 0.3) rgba(255 255 255 / 0.1);
     }
 
-    /* Hide scrollbar for Webkit browsers */
     .scroll-container::-webkit-scrollbar {
       height: 8px;
     }
@@ -95,51 +97,80 @@
       border-radius: 9999px;
     }
 
-    /* Firefox scrollbar */
-    .scroll-container {
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255 255 255 / 0.3) rgba(255 255 255 / 0.1);
+    /* Table improvements */
+    .table-container {
+      overflow-x: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.1);
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Stats section enhancements */
+    .stats-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stats-card:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body class="min-h-screen py-12 px-4">
   <!-- Audio autoplay -->
   <audio id="background-audio" autoplay loop muted playsinline>
-  <source src="hn.mp3" type="audio/mpeg" />
+    <source src="hn.mp3" type="audio/mpeg" />
+  </audio>
 
-</audio>
-
-<script>
-
-  document.body.addEventListener('click', function () {
-    const audio = document.getElementById('background-audio');
-    if (audio.muted) {
-      audio.muted = false;
-      audio.play();
-    }
-  }, { once: true });
-</script>
-
+  <script>
+    document.body.addEventListener('click', function () {
+      const audio = document.getElementById('background-audio');
+      if (audio.muted) {
+        audio.muted = false;
+        audio.play();
+      }
+    }, { once: true });
+  </script>
 
   <div class="max-w-7xl mx-auto">
     <!-- Header Section -->
     <header class="text-center mb-16">
       <div class="floating inline-block mb-6">
-        <div
-          class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto"
-        >
+        <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto">
           <i class="fas fa-graduation-cap text-4xl text-white"></i>
         </div>
       </div>
-      <h1 class="text-5xl font-bold text-white mb-2">TORANG STATISTIKA</h1>
-      <p class="text-xl text-white/90 max-w-3xl mx-auto">
+      <h1 class="text-5xl font-bold text-white mb-2 drop-shadow-lg">TORANG STATISTIKA</h1>
+      <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
         Selamat datang di Website kami Statistika B, di sini hanya ada Foto-Foto
       </p>
     </header>
 
     <!-- Students Grid -->
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Card 1 -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      <!-- Card 1: Korelasi -->
       <article class="student-card">
         <div class="scroll-container">
           <img src="pp2.jpg" alt="Foto Korelasi 2" class="student-image" loading="lazy" />
@@ -147,104 +178,110 @@
           <img src="pp4.jpg" alt="Foto Korelasi 1" class="student-image" loading="lazy" />
           <img src="pp5.jpg" alt="Foto Korelasi 1" class="student-image" loading="lazy" />
         </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h2 class="text-3xl font-bold text-white mb-2">KORELASI</h2>
-          <p class="text-white/80 mb-4">Foto Bersama Saat Korelasi</p>
-                      <span class="badge bg-red-500 text-white px-3 py-1 rounded-full text-xs">MASA KORELASI</span>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">KORELASI</h2>
+            <p class="text-white/80 mb-4">Foto Bersama Saat Korelasi</p>
           </div>
+          <span class="badge bg-red-500 text-white px-4 py-2 rounded-full text-sm self-start">MASA KORELASI</span>
         </div>
       </article>
 
-      <!-- Card 2 -->
+      <!-- Card 2: Ngumpul -->
       <article class="student-card">
         <div class="scroll-container">
           <img src="ngumpul1.jpg" alt="Foto Ngumpul 1" class="student-image" loading="lazy" />
           <img src="ngumpul2.jpg" alt="Foto Ngumpul 2" class="student-image" loading="lazy" />
           <img src="ngumpul3.jpg" alt="Foto Ngumpul 3" class="student-image" loading="lazy" />
         </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h2 class="text-3xl font-bold text-white mb-2">Foto Bersama Di Rumah Key</h2>
-          <p class="text-white/80 mb-4">Habis Monga Bersama</p>
-          <div class="flex items-center space-x-2 mt-auto">
-            <span class="badge bg-yellow-500 text-white px-3 py-1 rounded-full text-xs">NGUMPUL BARENG</span>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">Foto Bersama Di Rumah Key</h2>
+            <p class="text-white/80 mb-4">Habis Monga Bersama</p>
           </div>
+          <span class="badge bg-yellow-500 text-white px-4 py-2 rounded-full text-sm self-start">NGUMPUL BARENG</span>
         </div>
       </article>
 
-      <!-- Card 3 -->
+      <!-- Card 3: Statistics Got-Talent -->
       <article class="student-card">
         <div class="scroll-container">
           <img src="minat1.jpg" alt="Statistics Got-Talent 1" class="student-image" loading="lazy" />
           <img src="minat2.jpg" alt="Statistics Got-Talent 2" class="student-image" loading="lazy" />
         </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h2 class="text-3xl font-bold text-white mb-2">STATISTICS GOT-TALENT</h2>
-          <p class="text-white/80 mb-4">Foto Bersama Bersama Kating Saat Agenda</p>
-          <div class="flex items-center space-x-2 mt-auto">
-            <span class="badge bg-red-500 text-white px-3 py-1 rounded-full text-xs">Foto Bersama Kating Kelas B</span>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">STATISTICS GOT-TALENT</h2>
+            <p class="text-white/80 mb-4">Foto Bersama Bersama Kating Saat Agenda</p>
           </div>
+          <span class="badge bg-red-500 text-white px-4 py-2 rounded-full text-sm self-start">Foto Bersama Kating Kelas B</span>
         </div>
       </article>
 
+      <!-- Card 4: Metode Statistika -->
       <article class="student-card">
         <div class="scroll-container">
-          <img src="ms.jpg" alt="Foto Korelasi 2" class="student-image" loading="lazy" />
-          <img src="ms2.jpg" alt="Foto Korelasi 3" class="student-image" loading="lazy" />
+          <img src="ms.jpg" alt="Foto Metode Statistika 1" class="student-image" loading="lazy" />
+          <img src="ms2.jpg" alt="Foto Metode Statistika 2" class="student-image" loading="lazy" />
         </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h2 class="text-3xl font-bold text-white mb-2">Metode Statistika</h2>
-          <p class="text-white/80 mb-4">FOTO BERSAMA KELAS B SESUDAH MK </p>
-          <div class="flex items-center space-x-2 mt-auto"> METODA STATISTIKA
-            <span class="badge bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium"></span>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">Metode Statistika</h2>
+            <p class="text-white/80 mb-4">FOTO BERSAMA KELAS B SESUDAH MK</p>
           </div>
+          <span class="badge bg-yellow-500 text-white px-4 py-2 rounded-full text-sm self-start">FOTO BARENG</span>
         </div>
       </article>
 
+      <!-- Card 5: Fisika Dasar -->
       <article class="student-card">
         <div class="scroll-container">
-          <img src="fd.jpg" alt="Foto Ngumpul 1" class="student-image" loading="lazy" />
-          <img src="fd2.jpg" alt="Foto Ngumpul 2" class="student-image" loading="lazy" />
-          <img src="fd3.jpg" alt="Foto Ngumpul 3" class="student-image" loading="lazy" />
-          <img src="fd4.jpg" alt="Foto Ngumpul 3" class="student-image" loading="lazy" />
+          <img src="fd.jpg" alt="Foto Fisika Dasar 1" class="student-image" loading="lazy" />
+          <img src="fd2.jpg" alt="Foto Fisika Dasar 2" class="student-image" loading="lazy" />
+          <img src="fd3.jpg" alt="Foto Fisika Dasar 3" class="student-image" loading="lazy" />
+          <img src="fd4.jpg" alt="Foto Fisika Dasar 4" class="student-image" loading="lazy" />
         </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h2 class="text-3xl font-bold text-white mb-2">Foto Bersama Di Kelas</h2>
-          <p class="text-white/80 mb-4">Selesai MK Fisika Dasar</p>
-          <div class="flex items-center space-x-2 mt-auto">
-            <span class="badge bg-yellow-500 text-white px-3 py-1 rounded-full text-xs">FOTO BARENG </span>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">Foto Bersama Di Kelas</h2>
+            <p class="text-white/80 mb-4">Selesai MK Fisika Dasar</p>
           </div>
+          <span class="badge bg-red-500 text-white px-4 py-2 rounded-full text-sm self-start">Foto Bersama</span>
         </div>
       </article>
 
-      <!-- Card 4 -->
+      <!-- Card 6: Kerja Tugas -->
       <article class="student-card">
         <div class="scroll-container">
           <img src="1.jpg" alt="Kerja Tugas Bersama 1" class="student-image" loading="lazy" />
           <img src="2.jpg" alt="Kerja Tugas Bersama 2" class="student-image" loading="lazy" />
         </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h2 class="text-3xl font-bold text-white mb-2">KERJA TUGAS BERSAMA</h2>
-          <p class="text-white/80 mb-4">Dokumentasi Saat Kerja Tugas</p>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">KERJA TUGAS BERSAMA</h2>
+            <p class="text-white/80 mb-4">Dokumen Tugas Kerja Tugas Bersama</p>
+          </div>
+          <span class="badge bg-red-500 text-white px-4 py-2 rounded-full text-sm self-start">KERJA TUGAS</span>
         </div>
       </article>
-<!-- Card  -->
+
+      <!-- Card 7: Perintis -->
       <article class="student-card">
         <div class="scroll-container">
-          <img src="p.jpg" alt="Foto Ngumpul 1" class="student-image" loading="lazy" />
-          <img src="p2.jpg" alt="Foto Ngumpul 2" class="student-image" loading="lazy" />
-          <img src="p3.jpg" alt="Foto Ngumpul 3" class="student-image" loading="lazy" />
+          <img src="p.jpg" alt="Foto Perintis 1" class="student-image" loading="lazy" />
+          <img src="p2.jpg" alt="Foto Perintis 2" class="student-image" loading="lazy" />
+          <img src="p3.jpg" alt="Foto Perintis 3" class="student-image" loading="lazy" />
         </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h2 class="text-3xl font-bold text-white mb-2">Foto Bersama Di Perintis</h2>
-          <p class="text-white/80 mb-4">Fotbar Perintis</p>
-          <div class="flex items-center space-x-2 mt-auto">
-            <span class="badge bg-yellow-500 text-white px-3 py-1 rounded-full text-xs">FOTO BERSAMA</span>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">Foto Bersama Di Perintis</h2>
+            <p class="text-white/80 mb-4">Fotbar Perintis</p>
           </div>
+          <span class="badge bg-yellow-500 text-white px-4 py-2 rounded-full text-sm self-start">FOTO BERSAMA</span>
         </div>
       </article>
 
-
-      <!-- Card 5 -->
+      <!-- Card 8: Bonus -->
       <article class="student-card">
         <div class="scroll-container">
           <img src="bonus.jpg" alt="Bonus Foto 1" class="student-image" loading="lazy" />
@@ -254,44 +291,40 @@
           <img src="bonus5.jpg" alt="Bonus Foto 5" class="student-image" loading="lazy" />
           <img src="bonus6.jpg" alt="Bonus Foto 6" class="student-image" loading="lazy" />
         </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h2 class="text-3xl font-bold text-white mb-2">FOTO DAN SELFI LAINNYA (BONUS)</h2>
-          <p class="text-white/80 mb-4">Maaf ya teman-teman</p>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">FOTO DAN SELFI LAINNYA (BONUS)</h2>
+            <p class="text-white/80 mb-4">Maaf ya teman-teman</p>
+          </div>
+          <span class="badge bg-blue-500 text-white px-4 py-2 rounded-full text-sm self-start">BONUS GALLERY</span>
         </div>
       </article>
     </section>
 
     <!-- Class Statistics -->
-    <section
-      class="mt-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 text-center"
-    >
-      <h2 class="text-3xl font-bold text-white mb-8">Statistika Kelas</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div>
-          <div class="text-4xl font-bold text-white mb-2">18</div>
-          <div class="text-white/80">Siswa</div>
-        </div>
-        <div>
-          <div class="text-4xl font-bold text-white mb-2">---</div>
-          <div class="text-white/80">Dosen</div>
-        </div>
-        <div>
-          <div class="text-4xl font-bold text-white mb-2">---</div>
-          <div class="text-white/80">Matkul</div>
-        </div>
-        <div>
-          <div class="text-4xl font-bold text-white mb-2">95%</div>
-          <div class="text-white/80">Kehadiran</div>
-        </div>
+    <section class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div class="stats-card">
+        <div class="text-4xl font-bold text-white mb-2">18</div>
+        <div class="text-white/80">Siswa</div>
+      </div>
+      <div class="stats-card">
+        <div class="text-4xl font-bold text-white mb-2">---</div>
+        <div class="text-white/80">Dosen</div>
+      </div>
+      <div class="stats-card">
+        <div class="text-4xl font-bold text-white mb-2">---</div>
+        <div class="text-white/80">Matkul</div>
+      </div>
+      <div class="stats-card">
+        <div class="text-4xl font-bold text-white mb-2">95%</div>
+        <div class="text-white/80">Kehadiran</div>
       </div>
     </section>
 
     <!-- Daftar Nama Mahasiswa dan NIM -->
-    <section
-      class="mt-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 max-w-4xl mx-auto"
-    >
-      <h2 class="text-3xl font-bold text-white mb-6">Daftar Nama Mahasiswa dan NIM</h2>
-      <div class="overflow-x-auto">
+    <section class="mt-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 max-w-6xl mx-auto mb-16">
+      <h2 class="text-3xl font-bold text-white mb-6 text-center">Daftar Nama Mahasiswa dan NIM</h2>
+      <div class="table-container">
         <table class="min-w-full text-left text-white/90">
           <thead>
             <tr class="border-b border-white/30">
@@ -331,75 +364,4 @@
               <td class="py-2 px-4">Nur Aida Lutfiah Ma'duni</td>
               <td class="py-2 px-4">04103425024</td>
             </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">7</td>
-              <td class="py-2 px-4">Rahmat Maulana Umar</td>
-              <td class="py-2 px-4">04103425057</td>
-            </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">8</td>
-              <td class="py-2 px-4">Noviani Resya Katili</td>
-              <td class="py-2 px-4">04103425020</td>
-            </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">9</td>
-              <td class="py-2 px-4">Nurhayati Bau</td>
-              <td class="py-2 px-4">04103425011</td>
-            </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">10</td>
-              <td class="py-2 px-4">Zuleyka Adiyah Salwah</td>
-              <td class="py-2 px-4">04103425053</td>
-            </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">11</td>
-              <td class="py-2 px-4">Fitra Giasi</td>
-              <td class="py-2 px-4">04103425136</td>
-            </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">12</td>
-              <td class="py-2 px-4">Sabrina Putri Maku</td>
-              <td class="py-2 px-4">04103425037</td>
-            </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">13</td>
-              <td class="py-2 px-4">Ramla Septiani Limalo</td>
-              <td class="py-2 px-4">04103425031</td>
-  </tr>
-  <tr class="border-b border-white/20 hover:bg-white/10">
-    <td class="py-2 px-4">14</td>
-    <td class="py-2 px-4">Muhammad Abdillah Uno</td>
-    <td class="py-2 px-4">04103425032</td>
-  </tr>
-  <tr class="border-b border-white/20 hover:bg-white/10">
-    <td class="py-2 px-4">15</td>
-    <td class="py-2 px-4">Mianti H. Rauf</td>
-    <td class="py-2 px-4">04103425003</td>
-  </tr>
-  <tr class="border-b border-white/20 hover:bg-white/10">
-    <td class="py-2 px-4">16</td>
-    <td class="py-2 px-4">Rofiiah Nabiila Lahay</td>
-    <td class="py-2 px-4">04103425008</td>
-  </tr>
-  <tr class="border-b border-white/20 hover:bg-white/10">
-    <td class="py-2 px-4">17</td>
-    <td class="py-2 px-4">Revalina Nusi</td>
-    <td class="py-2 px-4">04103425025</td>
-  </tr>
-  <tr class="border-b border-white/20 hover:bg-white/10">
-    <td class="py-2 px-4">18</td>
-    <td class="py-2 px-4">Alfiani</td>
-    <td class="py-2 px-4">04103425044</td>
-  </tr>
-</tbody>
-
-        </table>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="mt-16 text-center text-white/80">
-      <p>
-        © 2025 Jurusan Matematika Prodi Statistika Universitas Negeri Gorontalo.
-        All rights reserved.
-      </p
+           
