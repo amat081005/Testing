@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RAHMAT UMAR</title>
+  <title>STATISTIKA B</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link
     rel="stylesheet"
@@ -45,6 +45,7 @@
       width: 100%;
       max-width: 300px;
       user-select: none;
+      cursor: pointer;
     }
 
     .student-card:hover .student-image {
@@ -281,6 +282,24 @@
         </div>
       </article>
 
+      <!-- Card: Kata Kata Dika (Fixed with video thumbnail) -->
+      <article class="student-card">
+        <div class="scroll-container">
+          <img id="thumbnail" src="bonus.jpg" alt="Thumbnail for Video" class="student-image" loading="lazy" />
+          <video id="videoPlayer" class="student-image" controls style="display:none;" width="320">
+            <source src="bonus.mp4" type="video/mp4" />
+            Browser Anda tidak mendukung video.
+          </video>
+        </div>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white mb-2">KATA KATA DIKA</h2>
+            <p class="text-white/80 mb-4">AMPAL POLI</p>
+          </div>
+          <span class="badge bg-blue-500 text-white px-4 py-2 rounded-full text-sm self-start">BANG DIKA</span>
+        </div>
+      </article>
+
       <!-- Card 8: Bonus -->
       <article class="student-card">
         <div class="scroll-container">
@@ -349,19 +368,4 @@
               <td class="py-2 px-4">Andika Rezky Putra Alim</td>
               <td class="py-2 px-4">04103425035</td>
             </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">4</td>
-              <td class="py-2 px-4">Keyza Putri Zakaria</td>
-              <td class="py-2 px-4">04103425041</td>
-            </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">5</td>
-              <td class="py-2 px-4">Fistiana S Bonde</td>
-              <td class="py-2 px-4">04103425055</td>
-            </tr>
-            <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">6</td>
-              <td class="py-2 px-4">Nur Aida Lutfiah Ma'duni</td>
-              <td class="py-2 px-4">04103425024</td>
-            </tr>
-           
+            <tr
