@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Task Manager - Estetik & Keren</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --accent-blue: #4facfe;
+            --accent-green: #43e97b;
+            --accent-red: #ff6b6b;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-radius: 12px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Login Modal */
+        .login-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .login-modal.hidden {
+            display: none;
+        }
+
+        .login-form {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-primary);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1em;
+            transition: var(--transition);
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .login-form button {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .login-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            display: none; /* Hidden until login */
+        }
+
+        header.show {
+            display: block;
+        }
+
+        .user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .role-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .role-ketua {
+            background: rgba(67, 233, 123, 0.2);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .role-anggota {
+            background: rgba(79, 172, 254, 0.2);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+        }
+
+        .logout-btn {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255, 107, 107, 0.4);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .add-task-form {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            display: none; /* Hidden for non-ketua */
+        }
+
+        .add-task-form.show {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-primary);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1em;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(79, 172, 254, 0.4);
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            border: 1px solid var(--accent-blue);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .tasks-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .task-item {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .task-item.completed {
+            border-left-color: var(--accent-green);
+            opacity: 0.8;
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .task-title {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .task-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+            border: 1px solid #ffc107;
+        }
+
+        .status-completed {
+            background: rgba(67, 233, 123, 0.2);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .task-deadline {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .task-description {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Default hide actions */
+        .toggle-btn, .edit-btn, .delete-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: var(--transition);
+            display: none;
+        }
+
+        /* For ketua, show all actions */
+        .task-actions.ketua .toggle-btn,
+        .task-actions.ketua .edit-btn,
+        .task-actions.ketua .delete-btn {
+            display: inline-block;
+        }
+
+        /* For anggota, hide all */
+        .task-actions.anggota .toggle-btn,
+        .task-actions.anggota .edit-btn,
+        .task-actions.anggota .delete-btn {
+            display: none;
+        }
+
+        .toggle-btn {
+            background: var(--accent-green);
+            color: white;
+        }
+
+        .edit-btn {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .delete-btn {
+            background: var(--accent-red);
+            color: white;
+        }
+
+        .edit-form {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .edit-form.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .no-tasks {
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            padding: 40px;
+        }
+
+        .read-only-notice {
+            background: rgba(79, 172, 254, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-blue);
+            display: none;
+        }
+
+        .read-only-notice.show {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 10px; }
+            h1 { font-size: 2em; }
+            .task-actions { flex-direction: column; }
+            .filters { flex-direction: column; align-items: center; }
+            .user-info { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <form class="login-form" id="loginForm">
+            <h2>Login Kelas</h2>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">Masuk</button>
+            <p style="margin-top: 15px; color: var(--text-secondary); font-size: 0.9em;">
+                Ketua: ketua / admin123<br>
+                Anggota: anggota / 123
+            </p>
+        </form>
+    </div>
+
+    <div class="container">
+        <header id="header">
+            <div class="user-info">
+                <div id="roleBadge">Role: Belum Login</div>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+            <h1>College Task Manager</h1>
+            <p>Kelola tugas kuliahmu dengan gaya!</p>
+        </header>
+
+        <div id="readOnlyNotice" class="read-only-notice">
+            Kamu login sebagai Anggota. Hanya bisa melihat tugas. Hubungi Ketua untuk perubahan.
+        </div>
+
+        <form class="add-task-form" id="addTaskForm">
+            <div class="form-group">
+                <label for="taskName">Nama Tugas:</label>
+                <input type="text" id="taskName" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Mata Kuliah:</label>
+                <input type="text" id="course" required>
+            </div>
+            <div class="form-group">
+                <label for="deadline">Deadline:</label>
+                <input type="date" id="deadline" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Deskripsi:</label>
+                <textarea id="description" placeholder="Detail tugas..."></textarea>
+            </div>
+            <button type="submit">Tambah Tugas</button>
+        </form>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Semua</button>
+            <button class="filter-btn" data-filter="pending">Belum Selesai</button>
+            <button class="filter-btn" data-filter="completed">Selesai</button>
+        </div>
+
+        <div class="tasks-list" id="tasksList">
+            <p class="no-tasks">Belum ada tugas. Tambahkan yang pertama!</p>
+        </div>
+    </div>
+
+    <script>
+        let tasks = JSON.parse(localStorage.getItem('collegeTasks')) || [];
+        let currentFilter = 'all';
+        let editingId = null;
+        let currentRole = localStorage.getItem('userRole') || null;
+        let currentUser  = localStorage.getItem('username') || null;
+
+        const loginModal = document.getElementById('loginModal');
+        const loginForm = document.getElementById('loginForm');
+        const header = document.getElementById('header');
+        const addTaskForm = document.getElementById('addTaskForm');
+        const tasksList = document.getElementById('tasksList');
+        const readOnlyNotice = document.getElementById('readOnlyNotice');
+        const roleBadge = document.getElementById('roleBadge');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        // Check if already logged in
+        if (currentRole) {
+            loginModal.classList.add('hidden');
+            header.classList.add('show');
+            updateUIForRole(currentRole);
+            renderTasks(currentFilter);
+            console.log('Auto-login as:', currentRole); // Debug
+        }
+
+        // Login function
+        function loginUser (username, password) {
+            console.log('Attempting login:', username, password); // Debug
+            if (username === 'ketua' && password === 'admin123') {
+                return 'ketua';
+            } else if (username === 'anggota' && password === '123') {
+                return 'anggota';
+            }
+            return null; // Invalid
+        }
+
+        // Update UI based on role
+        function updateUIForRole(role) {
+            roleBadge.innerHTML = `Role: ${role === 'ketua' ? 'Ketua Kelas' : 'Anggota Kelas'} (${currentUser })`;
+            roleBadge.className = `role-badge role-${role}`;
+
+            if (role === 'ketua') {
+                addTaskForm.classList.add('show');
+                readOnlyNotice.classList.remove('show');
+                console.log('UI updated for ketua'); // Debug
+            } else {
+                add
