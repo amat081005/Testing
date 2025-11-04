@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>STATISTIKA B</title>
+  <title> STATISTIKA </title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link
     rel="stylesheet"
@@ -137,12 +137,35 @@
     .stats-card:hover {
       transform: scale(1.05);
     }
+     /* Container logo IG floating */
+  .ig-floating {
+    position: fixed;
+    bottom: 20px;   /* jarak dari bawah */
+    right: 20px;    /* jarak dari kanan */
+    width: 40px;    /* ukuran logo */
+    height: 40px;
+    z-index: 1000;  /* agar selalu di atas konten */
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* Logo IG */
+  .ig-floating img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* Hover effect */
+  .ig-floating:hover {
+    transform: scale(1.2); /* membesar sedikit */
+    opacity: 0.8;           /* sedikit transparan */
+  }
   </style>
 </head>
 <body class="min-h-screen py-12 px-4">
   <!-- Audio autoplay -->
   <audio id="background-audio" autoplay loop muted playsinline>
-    <source src="hn.mp3" type="audio/mpeg" />
+    <source src="gacor.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
@@ -164,9 +187,19 @@
         </div>
       </div>
       <h1 class="text-5xl font-bold text-white mb-2 drop-shadow-lg">TORANG STATISTIKA</h1>
+      
+      <center>
+        <!-- FOTO FAKULTAS -->
+      <img src="mipa.png" alt="Foto Korelasi 2" class="student-image" loading="lazy" />
+      </center>
+
       <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
         Selamat datang di Website kami Statistika B, di sini hanya ada Foto-Foto
       </p>
+      <a href="https://www.instagram.com/modeofunity.b/" target="_blank" class="ig-floating">
+  <img src="ig.jpg" alt="Instagram Kelas">
+</a>
+
     </header>
 
     <!-- Students Grid -->
@@ -311,11 +344,11 @@
         <div class="text-white/80">Siswa</div>
       </div>
       <div class="stats-card">
-        <div class="text-4xl font-bold text-white mb-2">---</div>
+        <div class="text-4xl font-bold text-white mb-2">16</div>
         <div class="text-white/80">Dosen</div>
       </div>
       <div class="stats-card">
-        <div class="text-4xl font-bold text-white mb-2">---</div>
+        <div class="text-4xl font-bold text-white mb-2">8</div>
         <div class="text-white/80">Matkul</div>
       </div>
       <div class="stats-card">
@@ -339,17 +372,375 @@
           <tbody>
             <tr class="border-b border-white/20 hover:bg-white/10">
               <td class="py-2 px-4">1</td>
+              <td class="py-2 px-4">Andika Rezky Putra Alim</td>
+              <td class="py-2 px-4">04103425035</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">2</td>
+              <td class="py-2 px-4">Fitra Giasi</td>
+              <td class="py-2 px-4">04103425036</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">3</td>
+              <td class="py-2 px-4">Muhammad Abdillah Uno</td>
+              <td class="py-2 px-4">04103425032</td>
+            </tr>
+
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">4</td>
+              <td class="py-2 px-4">Rahmat Maulana Umar</td>
+              <td class="py-2 px-4">04103425057</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">5</td>
+              <td class="py-2 px-4">Alfiani</td>
+              <td class="py-2 px-4">04103425044</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">6</td>
               <td class="py-2 px-4">Arum Kusmawati Yusuf</td>
               <td class="py-2 px-4">04103425051</td>
             </tr>
             <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">2</td>
+              <td class="py-2 px-4">7</td>
               <td class="py-2 px-4">Fadlun Panigoro</td>
               <td class="py-2 px-4">04103425006</td>
             </tr>
             <tr class="border-b border-white/20 hover:bg-white/10">
-              <td class="py-2 px-4">3</td>
-              <td class="py-2 px-4">Andika Rezky Putra Alim</td>
-              <td class="py-2 px-4">04103425035</td>
+              <td class="py-2 px-4">8</td>
+              <td class="py-2 px-4">Fistiana S Bonde</td>
+              <td class="py-2 px-4">04103425055</td>
             </tr>
-            <tr
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">9</td>
+              <td class="py-2 px-4">Keyza Putri Zakaria</td>
+              <td class="py-2 px-4">04103425041</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">10</td>
+              <td class="py-2 px-4">Mianti H. Rauf</td>
+              <td class="py-2 px-4">04103425003</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">11</td>
+              <td class="py-2 px-4">Noviani Resya Katili</td>
+              <td class="py-2 px-4">04103425020</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">12</td>
+              <td class="py-2 px-4">Nur Aida Lutfiah Ma'duni</td>
+              <td class="py-2 px-4">04103425024</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">13</td>
+              <td class="py-2 px-4">Nurhayati Bau</td>
+              <td class="py-2 px-4">04103425011</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">14</td>
+              <td class="py-2 px-4">Ramla Septiani Lomalo</td>
+              <td class="py-2 px-4">04103425031</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">15</td>
+              <td class="py-2 px-4">Revalina Nusi</td>
+              <td class="py-2 px-4">04103425025</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">16</td>
+              <td class="py-2 px-4">Rofiiah Nabiila Lahay</td>
+              <td class="py-2 px-4">04103425008</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">17</td>
+              <td class="py-2 px-4">Sabrina Putri Maku</td>
+              <td class="py-2 px-4">04103425037</td>
+            </tr>
+            <tr class="border-b border-white/20 hover:bg-white/10">
+              <td class="py-2 px-4">18</td>
+              <td class="py-2 px-4">Zuleyka Adiyah Salwah</td>
+              <td class="py-2 px-4">04103425007</td>
+            </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+   <body class="bg-gradient-to-br from-indigo-900 via-purple-900 to-blue-900 min-h-screen text-white">
+
+  <!-- JADWAL KULIAH -->
+  <section class="mt-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 max-w-6xl mx-auto mb-16 shadow-2xl">
+    <h2 class="text-4xl font-bold text-center mb-10">📚 Jadwal Kuliah Kelas B</h2>
+
+    <div class="space-y-10">
+
+      <!-- HARI SENIN -->
+      <div>
+        <h3 class="mb-2 font-semibold text-xl text-white uppercase tracking-wide">Senin</h3>
+        <div class="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+          <table class="min-w-full table-auto text-sm text-center">
+            <thead class="bg-slate-100 text-gray-800 uppercase text-xs">
+              <tr>
+                <th class="py-3 px-2">No</th>
+                <th class="py-3 px-2">Mata Kuliah</th>
+                <th class="py-3 px-2">SKS</th>
+                <th class="py-3 px-2">Kelas</th>
+                <th class="py-3 px-2">Mulai</th>
+                <th class="py-3 px-2">Selesai</th>
+                <th class="py-3 px-2">Ruangan</th>
+                <th class="py-3 px-2">Tim Pengajar</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-300 bg-white/20">
+              <tr class="hover:bg-white/30 transition">
+                <td class="py-3 px-2">1</td>
+                <td class="py-3 px-2">Aljabar Linier dan Matriks</td>
+                <td class="py-3 px-2">3</td>
+                <td class="py-3 px-2">B</td>
+                <td class="py-3 px-2">14:41</td>
+                <td class="py-3 px-2">17:10</td>
+                <td class="py-3 px-2">RL.I.2</td>
+                <td class="py-3 px-2 text-left">
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Dosen 1</li>
+                    <li>Dosen 2</li>
+                    
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HARI SELASA -->
+      <div>
+        <h3 class="mb-2 font-semibold text-xl text-white uppercase tracking-wide">Selasa</h3>
+        <div class="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+          <table class="min-w-full table-auto text-sm text-center">
+            <thead class="bg-slate-100 text-gray-800 uppercase text-xs">
+              <tr>
+                <th class="py-3 px-2">No</th>
+                <th class="py-3 px-2">Mata Kuliah</th>
+                <th class="py-3 px-2">SKS</th>
+                <th class="py-3 px-2">Kelas</th>
+                <th class="py-3 px-2">Mulai</th>
+                <th class="py-3 px-2">Selesai</th>
+                <th class="py-3 px-2">Ruangan</th>
+                <th class="py-3 px-2">Tim Pengajar</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-300 bg-white/20">
+              <tr class="hover:bg-white/30 transition">
+                <td class="py-3 px-2">1</td>
+                <td class="py-3 px-2">Kimia Dasar</td>
+                <td class="py-3 px-2">2</td>
+                <td class="py-3 px-2">B</td>
+                <td class="py-3 px-2">08:41</td>
+                <td class="py-3 px-2">10:20</td>
+                <td class="py-3 px-2">RL.III.8</td>
+                <td class="py-3 px-2 text-left">
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Dosen 1</li>
+                    <li>Dosen 2</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/30 transition">
+                <td class="py-3 px-2">2</td>
+                <td class="py-3 px-2">Biologi Umum</td>
+                <td class="py-3 px-2">2</td>
+                <td class="py-3 px-2">B</td>
+                <td class="py-3 px-2">13:00</td>
+                <td class="py-3 px-2">14:40</td>
+                <td class="py-3 px-2">RL.III.1</td>
+                <td class="py-3 px-2 text-left">
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Dosen 1</li>
+                    <li>Dosen 2</li>
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HARI RABU -->
+      <div>
+        <h3 class="mb-2 font-semibold text-xl text-white uppercase tracking-wide">Rabu</h3>
+        <div class="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+          <table class="min-w-full table-auto text-sm text-center">
+            <thead class="bg-slate-100 text-gray-800 uppercase text-xs">
+              <tr>
+                <th class="py-3 px-2">No</th>
+                <th class="py-3 px-2">Mata Kuliah</th>
+                <th class="py-3 px-2">SKS</th>
+                <th class="py-3 px-2">Kelas</th>
+                <th class="py-3 px-2">Mulai</th>
+                <th class="py-3 px-2">Selesai</th>
+                <th class="py-3 px-2">Ruangan</th>
+                <th class="py-3 px-2">Tim Pengajar</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-300 bg-white/20">
+              <tr class="hover:bg-white/30 transition">
+                <td class="py-3 px-2">1</td>
+                <td class="py-3 px-2">Algoritma dan Pemrograman</td>
+                <td class="py-3 px-2">3</td>
+                <td class="py-3 px-2">B</td>
+                <td class="py-3 px-2">07:00</td>
+                <td class="py-3 px-2">08:40</td>
+                <td class="py-3 px-2">Lab. Komputasi Matematika</td>
+                <td class="py-3 px-2 text-left">
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Dosen 1</li>
+                    <li>Dosen 2</li>
+                  </ol>
+                </td>
+              </tr>
+              <tr class="hover:bg-white/30 transition">
+                <td class="py-3 px-2">2</td>
+                <td class="py-3 px-2">Metode Statistika</td>
+                <td class="py-3 px-2">3</td>
+                <td class="py-3 px-2">B</td>
+                <td class="py-3 px-2">09:31</td>
+                <td class="py-3 px-2">11:59</td>
+                <td class="py-3 px-2">RL.III.7</td>
+                <td class="py-3 px-2 text-left">
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Dosen 1</li>
+                    <li>Dosen 2</li>
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HARI KAMIS -->
+      <div>
+        <h3 class="mb-2 font-semibold text-xl text-white uppercase tracking-wide">Kamis</h3>
+        <div class="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+          <table class="min-w-full table-auto text-sm text-center">
+            <thead class="bg-slate-100 text-gray-800 uppercase text-xs">
+              <tr>
+                <th class="py-3 px-2">No</th>
+                <th class="py-3 px-2">Mata Kuliah</th>
+                <th class="py-3 px-2">SKS</th>
+                <th class="py-3 px-2">Kelas</th>
+                <th class="py-3 px-2">Mulai</th>
+                <th class="py-3 px-2">Selesai</th>
+                <th class="py-3 px-2">Ruangan</th>
+                <th class="py-3 px-2">Tim Pengajar</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-300 bg-white/20">
+             <tr class="hover:bg-white/30 transition">
+                <td class="py-3 px-2">1</td>
+                <td class="py-3 px-2">Fisika Dasar</td>
+                <td class="py-3 px-2">2</td>
+                <td class="py-3 px-2">B</td>
+                <td class="py-3 px-2">10:21</td>
+                <td class="py-3 px-2">00:00 / ?</td>
+                <td class="py-3 px-2">RL.III.3</td>
+                <td class="py-3 px-2 text-left">
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Dosen 1</li>
+                    <li>Dosen 2</li>
+                  </ol>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HARI JUMAT -->
+      <div>
+        <h3 class="mb-2 font-semibold text-xl text-white uppercase tracking-wide">Jumat</h3>
+        <div class="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+          <table class="min-w-full table-auto text-sm text-center">
+            <thead class="bg-slate-100 text-gray-800 uppercase text-xs">
+              <tr>
+                <th class="py-3 px-2">No</th>
+                <th class="py-3 px-2">Mata Kuliah</th>
+                <th class="py-3 px-2">SKS</th>
+                <th class="py-3 px-2">Kelas</th>
+                <th class="py-3 px-2">Mulai</th>
+                <th class="py-3 px-2">Selesai</th>
+                <th class="py-3 px-2">Ruangan</th>
+                <th class="py-3 px-2">Tim Pengajar</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-300 bg-white/20">
+            <tr class="hover:bg-white/30 transition">
+                <td class="py-3 px-2">1</td>
+                <td class="py-3 px-2">Kalkulus l</td>
+                <td class="py-3 px-2">3</td>
+                <td class="py-3 px-2">B</td>
+                <td class="py-3 px-2">13:00</td>
+                <td class="py-3 px-2">15:30</td>
+                <td class="py-3 px-2">Lab. Multimedia Matematika</td>
+                <td class="py-3 px-2 text-left">
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Dosen 1</li>
+                    <li>Dosen 2</li>
+                  </ol>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-white/30 transition">
+                <td class="py-3 px-2">2</td>
+                <td class="py-3 px-2">Pancasila</td>
+                <td class="py-3 px-2">2</td>
+                <td class="py-3 px-2">B</td>
+                <td class="py-3 px-2">15:31</td>
+                <td class="py-3 px-2">17:10</td>
+                <td class="py-3 px-2">RL.I.7</td>
+                <td class="py-3 px-2 text-left">
+                  <ol class="list-decimal list-inside space-y-1">
+                    <li>Dosen 1</li>
+                    <li>Dosen 2</li>
+                  </ol>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HARI SABTU -->
+      <div>
+        <h3 class="mb-2 font-semibold text-xl text-white uppercase tracking-wide">Sabtu</h3>
+        <div class="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+          <table class="min-w-full table-auto text-sm text-center">
+            <thead class="bg-slate-100 text-gray-800 uppercase text-xs">
+              <tr>
+                <th class="py-3 px-2">No</th>
+                <th class="py-3 px-2">Mata Kuliah</th>
+                <th class="py-3 px-2">SKS</th>
+                <th class="py-3 px-2">Kelas</th>
+                <th class="py-3 px-2">Mulai</th>
+                <th class="py-3 px-2">Selesai</th>
+                <th class="py-3 px-2">Ruangan</th>
+                <th class="py-3 px-2">Tim Pengajar</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-300 bg-white/20">
+              <tr>
+                <td colspan="8" class="py-4 italic text-gray-300">Belum ada jadwal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>
